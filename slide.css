@@ -1,0 +1,9 @@
+html, body {
+	margin: 0;
+	padding: 0;
+}
+.slide {
+	display: none;
+	background: #AAF;
+	padding: 1px;
+}
