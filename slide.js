@@ -1,38 +1,44 @@
-function slideSize() {
-  $('.slide').height($(window).height() - 2);
-}
-function nextSlide() {
-  var currentslide = $('.slide:visible').eq(0);
-  var next = currentslide.next('.slide');
-  currentslide.hide();
-  if (next.length > 0) {
-    next.show();
-  } else {
-    $('.slide').eq(0).show();
+var slideEng = {};
+
+(function() {
+  slideEng.slideSize = function() {
+    $('.slide').height($(window).height() - 2);
   }
-}
-function prevSlide() {
-  var currentslide = $('.slide:visible').eq(0);
-  var prev = currentslide.prev('.slide');
-  currentslide.hide();
-  if (prev.length > 0) {
-    prev.show();
-  } else {
-    $('.slide:last').eq(0).show();
+
+  slideEng.nextSlide = function() {
+    var currentslide = $('.slide:visible').eq(0);
+    var next = currentslide.next('.slide');
+    currentslide.hide();
+    if (next.length > 0) {
+      next.show();
+    } else {
+      $('.slide').eq(0).show();
+    }
   }
-}
+
+  slideEng.prevSlide = function() {
+    var currentslide = $('.slide:visible').eq(0);
+    var prev = currentslide.prev('.slide');
+    currentslide.hide();
+    if (prev.length > 0) {
+      prev.show();
+    } else {
+      $('.slide:last').eq(0).show();
+    }
+  }
+})();
 
 $(document).ready(function(){
-  slideSize();
-  $(window).resize(slideSize);
+  slideEng.slideSize();
+  $(window).resize(slideEng.slideSize);
   $(document).keyup(function(e){
     switch (e.which) {
     case 33:
-      prevSlide();
+      slideEng.prevSlide();
       e.stopPropagation();
       break;
     case 34:
-      nextSlide();
+      slideEng.nextSlide();
       e.stopPropagation();
       break;
     }
