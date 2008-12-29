@@ -2,7 +2,9 @@ var slideEng = {};
 
 (function() {
   slideEng.slideSize = function() {
-    $('.slide').height($(window).height() - 2);
+    var winheight = $(window).height();
+    $('.slide').height(winheight - 2);
+    $('body').css('font-size', (winheight / 20) + 'px');
   }
 
   slideEng.nextSlide = function() {
@@ -29,17 +31,47 @@ var slideEng = {};
 })();
 
 $(document).ready(function(){
+  // resize the slides to fill the window
   slideEng.slideSize();
   $(window).resize(slideEng.slideSize);
-  $(document).keyup(function(e){
+
+  // This section processes pageup and pagedown.
+  // We record and check if they were pressed before
+  // we process the keyup events. We clear the state
+  // on when the user switches away from the page.
+  var down33 = false;
+  var down34 = false;
+  $(document).blur(function(e){
+    down33 = false;
+    down34 = false;
+  });
+  $(document).keydown(function(e){
     switch (e.which) {
     case 33:
-      slideEng.prevSlide();
+      down33 = true;
       e.stopPropagation();
       break;
     case 34:
-      slideEng.nextSlide();
+      down34 = true;
       e.stopPropagation();
+      break;
+    }
+  });
+  $(document).keyup(function(e){
+    switch (e.which) {
+    case 33:
+      if (down33) {
+        slideEng.prevSlide();
+        down33 = false;
+        e.stopPropagation();
+      }
+      break;
+    case 34:
+      if (down34) {
+        slideEng.nextSlide();
+        down34 = false;
+        e.stopPropagation();
+      }
       break;
     }
   });
