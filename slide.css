@@ -22,10 +22,9 @@ html, body {
   color: inherit;
   border-bottom: solid 1px gray;
 }
-.runbutton {
+.gobutton {
   position: absolute;
   bottom: 0;
-  left: 0;
-  width: 10%;
-  height: 10%;
+  right: 0;
+  font-size: inherit;
 }

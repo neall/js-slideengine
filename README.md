@@ -23,3 +23,5 @@ Instructions for Use
 1. Copy or rename template.html
 2. Edit the HTML file, giving each slide the "slide" class.
 3. Optionally edit user.js and user.css.
+
+Use textareas for your JavaScript code. To avoid strange browser behavior on page reload, give each textarea a unique name.

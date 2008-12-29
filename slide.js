@@ -28,9 +28,18 @@ var slideEng = {};
       $('.slide:last').eq(0).show();
     }
   }
+
+  slideEng.makeGoButtons = function() {
+    $('textarea').after('<button class="gobutton">Go</button>');
+    $('button.gobutton').click(function(e) {
+      eval($(this).prev()[0].value);
+      e.stopPropogation();
+    });
+  }
 })();
 
 $(document).ready(function(){
+  slideEng.makeGoButtons();
   // resize the slides to fill the window
   slideEng.slideSize();
   $(window).resize(slideEng.slideSize);
