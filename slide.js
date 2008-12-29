@@ -33,7 +33,6 @@ var slideEng = {};
     $('textarea').after('<button class="gobutton">Go</button>');
     $('button.gobutton').click(function(e) {
       eval($(this).prev()[0].value);
-      e.stopPropogation();
     });
   }
 })();

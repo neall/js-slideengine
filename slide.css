@@ -3,12 +3,17 @@ html, body {
 	padding: 0;
   font-family: Verdana, Geneva, sans-serif;
 }
+h1, h2, h3, h4, h5, h6 {
+  text-align: center;
+}
+
 .slide {
 	display: none;
 	background: black;
   color: white;
 	padding: 1px;
   position: relative;
+  overflow: hidden;
 }
 .slide textarea {
   border: none 0;
