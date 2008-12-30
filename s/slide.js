@@ -1,10 +1,16 @@
 var slideEng = {};
 
 (function() {
+
   slideEng.slideSize = function() {
     var winheight = $(window).height();
-    $('.slide').height(winheight - 2);
     $('body').css('font-size', (winheight / 20) + 'px');
+    $('.slide').height(winheight - 2).each(function(){
+      var c = $(this).children('*');
+      if (c.length === 1) {
+        // centering code here
+      }
+    });
   }
 
   slideEng.nextSlide = function() {
@@ -30,7 +36,9 @@ var slideEng = {};
   }
 
   slideEng.makeGoButtons = function() {
-    $('textarea').after('<button class="gobutton">Go</button>');
+    $('textarea').
+      attr('spellcheck',''). // turn off spell checking in FireFox
+      after('<button class="gobutton">Go</button>');
     $('button.gobutton').click(function(e) {
       eval($(this).prev()[0].value);
     });
