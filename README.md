@@ -27,4 +27,4 @@ Instructions for Use
 * Use textareas for your JavaScript code.
 * To avoid strange browser behavior on page reload, give each textarea a unique name.
 * Aforementioned text areas are automatically formatted to take the top half of the screen and are given "Go" buttons that will `eval()` their contents.
-* Any slide that contains just one element will have that element automatically centered (not working yet).
+* Any slide that contains just one element will have that element automatically centered.
